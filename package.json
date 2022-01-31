@@ -1,0 +1,21 @@
+{
+    "name": "directus-extension-builder",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Karamoko Israel",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/karamokoisrael/directus-extension-builder.git"
+    },
+    "bugs": {
+      "url": "https://github.com/karamokoisrael/directus-extension-builder/issues"
+    },
+    "homepage": "https://github.com/karamokoisrael/directus-extension-builder#readme",
+    "description": ""
+  }
+  
