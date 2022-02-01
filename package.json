@@ -1,21 +1,29 @@
 {
     "name": "directus-extension-builder",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "bin/index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "directus-extension-builder": "./bin/index.js"
     },
     "keywords": [],
     "author": "Karamoko Israel",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/karamokoisrael/directus-extension-builder.git"
+        "type": "git",
+        "url": "git+https://github.com/karamokoisrael/directus-extension-builder.git"
     },
     "bugs": {
-      "url": "https://github.com/karamokoisrael/directus-extension-builder/issues"
+        "url": "https://github.com/karamokoisrael/directus-extension-builder/issues"
     },
     "homepage": "https://github.com/karamokoisrael/directus-extension-builder#readme",
-    "description": ""
-  }
-  
+    "description": "",
+    "dependencies": {
+        "boxen": "^6.2.1",
+        "chalk": "^5.0.0",
+        "lodash": "^4.17.21",
+        "yargs": "^17.3.1"
+    }
+}
