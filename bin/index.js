@@ -20,9 +20,8 @@ const argv = require('yargs')
         case "build":   
 
             const installModules = argv.i == true ? true : false;
-            const extensionTypes = argv.t != undefined ? argv.t : "*"
-            // const extensionType = argv.i == true ? true : false;
-        
+            const extensionTypes = argv.t != undefined ? argv.t : "*";
+            buildExtensions(extensionTypes, installModules)
             break;
     
         default:

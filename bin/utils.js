@@ -33,38 +33,43 @@ const quit = (messageString="", predefined = true, formatter=null)=>{
 }
 
 
-const buildExtensions = (extensionsType="*")=>{
-    const execTask = fs.readdir(dir, function(err, list) {
-        for(currentDir of list){
-            exec(`cd ${dir}/${currentDir} ${process.argv.slice(2).length > 2 ? "&& yarn install" : ""} && yarn build && cp dist/index.js ./`, (error, stdout, stderr) => {
-                if (error) {
-
+const buildExtensions = (extensionsType="*", installModules=false)=>{
+    const execTask = (dir)=>{
+        dir = path.resolve(dir)
+        // console.log(dir);
+        fs.readdir(dir, function(err, list) {
+            if(list == undefined) return;
+            for(currentDir of list){
+                exec(`cd ${dir}/${currentDir} ${installModules === true ? "&& yarn install" : ""} && yarn build && cp dist/index.js ./`, (error, stdout, stderr) => {
+                    if (error) {
+    
+                        returnMessage(
+                            `error in ${currentDir}: ${error.message}`
+                            , false)
+                        return;
+                    }
+                    if (stderr) {
+                        returnMessage(
+                            `stderr in ${currentDir}: ${stderr}`
+                            , false)
+                        return;
+                    }
                     returnMessage(
-                        `error in ${currentDir}: ${error.message}`
+                        `stdout in ${currentDir}: ${stdout}`
                         , false)
-                    return;
-                }
-                if (stderr) {
-                    returnMessage(
-                        `stderr in ${currentDir}: ${stderr}`
-                        , false)
-                    return;
-                }
-                returnMessage(
-                    `stdout in ${currentDir}: ${stdout}`
-                    , false)
-            })
-        }
-
-    })
-
+                })
+            }
+    
+        })
+    }
+ 
     if(extensionsType=="*"){
-        for (const currentExtensionType of acceptedExtensions) {
-            execTask(`extensions/${currentExtensionType}`)
+        for (let currentExtensionType of acceptedExtensions) {
+            execTask(`./extensions/${currentExtensionType}`)
         }
     }else{
         if(!acceptedExtensions.includes(extensionsType)) quit("wrongExtensionTypeGiven");
-        execTask(`extensions/${extensionsType}`)
+        execTask(`./extensions/${extensionsType}`)
     }    
 }  
 
