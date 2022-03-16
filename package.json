@@ -1,12 +1,13 @@
 {
-    "name": "directus-extension-builder",
+    "name": "@megamax-dev/directus-extension-builder",
     "version": "1.0.0",
     "main": "bin/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
-        "directus-extension-builder": "./bin/index.js"
+        "directus-extension-builder": "./bin/index.js",
+        "publish": "npm publish --access=public"
     },
     "keywords": [],
     "author": "Karamoko Israel",
